@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.human.main.PDAO">
+
+	<resultMap type="com.human.main.PDTO" id="plist">
+		<result property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="price" column="price" />
+		<result property="detail" column="detail" />
+		<result property="pic" column="pic" />
+	</resultMap>
+
+	<select id="selectP" resultMap="plist">
+		select * from mpproduct
+	</select>
+
+	<insert id="inputP" parameterType="com.human.main.PDTO">
+		insert into mpproduct(no,
+		title, price, detail,
+		pic)values(#{no},#{title},#{price},#{detail},#{pic})
+	</insert>
+
+</mapper>

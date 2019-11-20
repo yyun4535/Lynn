@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.human.main.BDAO">
+
+	<resultMap type="com.human.main.BDTO" id="blist">
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="date" column="date" />
+	</resultMap>
+
+	<select id="selectB" resultMap="blist">
+		select * from mpboard order by no
+		desc
+	</select>
+
+	<select id="detailN" parameterType="com.human.main.BDTO"
+		resultMap="blist">
+		select * from mpboard where no=#{no} and id=#{id}
+	</select>
+
+	<insert id="inputB" parameterType="com.human.main.BDTO">
+		insert into mpboard(no, id,
+		title, content, date)values(#{no},#{id},#{title},#{content},#{date})
+	</insert>
+
+</mapper>
